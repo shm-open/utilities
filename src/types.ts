@@ -1,0 +1,10 @@
+/**
+ * Make a Partial<T> type with all its field types as partial - recursively
+ */
+export type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[]
+        ? RecursivePartial<U>[]
+        : T[P] extends object
+        ? RecursivePartial<T[P]>
+        : T[P];
+};
