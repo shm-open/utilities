@@ -72,32 +72,32 @@ class VersionComparer {
     constructor(private version: string, private digitsLimit) {}
 
     /**
-     *
-     * @param target
+     * is above target version
+     * @param target target version to compare with
      */
     isAbove(target: string): boolean {
         return compareVersion(this.version, target, this.digitsLimit) > 0;
     }
 
     /**
-     *
-     * @param target
+     * is above or equal to target version
+     * @param target target version to compare with
      */
     isAboveOrEqualTo(target: string): boolean {
         return compareVersion(this.version, target, this.digitsLimit) >= 0;
     }
 
     /**
-     *
-     * @param target
+     * is below target version
+     * @param target target version to compare with
      */
     isBelow(target: string): boolean {
         return compareVersion(this.version, target, this.digitsLimit) < 0;
     }
 
     /**
-     *
-     * @param target
+     * is below or equal to target version
+     * @param target target version to compare with
      */
     isBelowOrEqualTo(target: string): boolean {
         return compareVersion(this.version, target, this.digitsLimit) <= 0;
