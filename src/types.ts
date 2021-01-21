@@ -8,3 +8,8 @@ export type RecursivePartial<T> = {
         ? RecursivePartial<T[P]>
         : T[P];
 };
+
+/**
+ * Nullable<T> could be T or undefined or null
+ */
+export type Nullable<T> = T | undefined | null;
