@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/shm-open/utilities/compare/v1.1.0...v1.2.0) (2021-01-28)
+
+
+### Features
+
+* add <ComposeProviders> react component for compose multiple context providers in a cleaner way ([76192ea](https://github.com/shm-open/utilities/commit/76192eaff0c4cda66f019c5343664bf4f704ac3b))
+* add type utilities PropertyType<> and ArrayItemType<> ([12abe1f](https://github.com/shm-open/utilities/commit/12abe1fff15c98f9c83e8988bcabd0f59c808f84))
+
 ## [1.1.0](https://github.com/shm-open/utilities/compare/v1.0.1...v1.1.0) (2021-01-21)
 
 
