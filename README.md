@@ -15,7 +15,7 @@ lightweight common utilities lib in es6 module
 -   [object: utitiles for process basic object type](src/object.ts)
 -   [sampling: smooth samling tool for calculate average values](src/sampling.ts)
 -   [tree: utilities for tree data structure](src/tree.ts)
--   [types: utilities for deal with ts types](src/types.ts)
+-   [types: utilities for deal with TypeScript types](src/types.ts)
 -   [url: utilities for handle url](src/url.ts)
 -   [version: handle version compare for version strings](src/version.ts)
 
