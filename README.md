@@ -19,8 +19,11 @@ lightweight common utilities lib in es6 module
 -   [url: utilities for handle url](src/url.ts)
 -   [version: handle version compare for version strings](src/version.ts)
 
-## react hooks
+## react hooks/utilities
 
 `import { * } from '@inno/utilities/lib/react'`
 
--   [useIsMountedRef](src/react/mounted)
+-   [ComposeProviders](src/react/compose.ts)
+-   [useIsMountedRef](src/react/mounted.ts)
+-   [usePrevious](src/react/previous.ts)
+-   [useRefWrapper](src/react/refwrapper.ts)
