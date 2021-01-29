@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/shm-open/utilities/compare/v1.2.0...v1.2.1) (2021-01-29)
+
+
+### Bug Fixes
+
+* expose ComposeProviders in react/index ([7a08a45](https://github.com/shm-open/utilities/commit/7a08a454bb654dfd9c6962b6bd3db5c4f91498f8))
+
 ## [1.2.0](https://github.com/shm-open/utilities/compare/v1.1.0...v1.2.0) (2021-01-28)
 
 
