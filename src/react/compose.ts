@@ -1,4 +1,4 @@
-import { ComponentType, createElement, PropsWithChildren, ReactNode } from 'react';
+import { ComponentType, createElement, PropsWithChildren, ReactElement, ReactNode } from 'react';
 
 interface ComposeProvidersProps {
     providers: ComponentType[];
@@ -15,8 +15,8 @@ interface ComposeProvidersProps {
 export function ComposeProviders({
     providers = [],
     children,
-}: PropsWithChildren<ComposeProvidersProps>): ReactNode {
+}: PropsWithChildren<ComposeProvidersProps>): ReactElement {
     return providers.reduceRight((composed, Provider) => {
         return createElement(Provider, null, composed);
-    }, children);
+    }, children) as ReactElement;
 }
