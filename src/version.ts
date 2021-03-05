@@ -86,6 +86,14 @@ class VersionComparer {
     }
 
     /**
+     * is equal to target version
+     * @param target target version to compare with
+     */
+    isEqualTo(target: string): boolean {
+        return compareVersion(this.version, target, this.digitsLimit) === 0;
+    }
+
+    /**
      * is below target version
      * @param target target version to compare with
      */
