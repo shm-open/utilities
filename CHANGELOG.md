@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/shm-open/utilities/compare/v1.2.2...v1.3.0) (2021-03-05)
+
+
+### Features
+
+* add isEqualTo() to VersionComparer ([7d1ebcc](https://github.com/shm-open/utilities/commit/7d1ebccdcbed64220e76652264352eb473c893b3))
+* add Typify<> to types ([70c67be](https://github.com/shm-open/utilities/commit/70c67be5c117320df7dadf36e75c1b1b0edd302f))
+
+
+### Bug Fixes
+
+* add eslint config and fix issues ([e9a49ae](https://github.com/shm-open/utilities/commit/e9a49aef4023f31ea1a95eae2d158467625885ab))
+
 ### [1.2.2](https://github.com/shm-open/utilities/compare/v1.2.1...v1.2.2) (2021-01-29)
 
 
