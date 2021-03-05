@@ -1,6 +1,6 @@
 function toVersionNumber(segment: string) {
     const num = parseInt(segment, 10);
-    if (isNaN(num)) {
+    if (Number.isNaN(num)) {
         return 0;
     }
     return num;
@@ -15,7 +15,7 @@ function getVersionSegment(version: string, index: number) {
  * get major version number from version string
  * @param version
  */
-export function getMajorVersion(version: string) {
+export function getMajorVersion(version: string): number {
     return getVersionSegment(version, 0);
 }
 
@@ -23,7 +23,7 @@ export function getMajorVersion(version: string) {
  * get minor version number from version string
  * @param version
  */
-export function getMinorVersion(version: string) {
+export function getMinorVersion(version: string): number {
     return getVersionSegment(version, 1);
 }
 
@@ -31,7 +31,7 @@ export function getMinorVersion(version: string) {
  * get patch version number from version string
  * @param version
  */
-export function getPatchVersion(version: string) {
+export function getPatchVersion(version: string): number {
     return getVersionSegment(version, 2);
 }
 
@@ -41,25 +41,23 @@ export function getPatchVersion(version: string) {
  * @param version2
  * @param digitsLimit limit the comparsion to only n digits, defaults to 3
  */
-export function compareVersion(version1: string, version2: string, digitsLimit: number = 3) {
+export function compareVersion(version1: string, version2: string, digitsLimit = 3): 1 | 0 | -1 {
     const segments1 = version1.split('.');
     const segments2 = version2.split('.');
     const len = Math.min(
         Math.max(segments1.length, segments2.length),
-        digitsLimit ? digitsLimit : Number.MAX_SAFE_INTEGER,
+        digitsLimit || Number.MAX_SAFE_INTEGER,
     );
-    for (let i = 0; i < len; i++) {
+    for (let i = 0; i < len; i += 1) {
         const seg1 = segments1[i];
         const seg2 = segments2[i];
-        if (seg1 === seg2) {
-            continue;
+        if (seg1 !== seg2) {
+            const v1 = toVersionNumber(seg1);
+            const v2 = toVersionNumber(seg2);
+            if (v1 !== v2) {
+                return v1 < v2 ? -1 : 1;
+            }
         }
-        const v1 = toVersionNumber(seg1);
-        const v2 = toVersionNumber(seg2);
-        if (v1 === v2) {
-            continue;
-        }
-        return v1 < v2 ? -1 : 1;
     }
 
     return 0;
@@ -106,8 +104,8 @@ class VersionComparer {
 
 /**
  * create a version comparer based on given version and digitsLimit
- * @param version
+ * @param ver
  * @param digitsLimit
  */
-export const version = (version: string, digitsLimit: number = 3): VersionComparer =>
-    new VersionComparer(version, digitsLimit);
+export const version = (ver: string, digitsLimit = 3): VersionComparer =>
+    new VersionComparer(ver, digitsLimit);

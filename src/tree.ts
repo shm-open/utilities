@@ -50,7 +50,7 @@ export function createTreeFilter<T>(
 ): ITreeFilter<T> {
     const treeFilter: ITreeFilter<T> = (node) => {
         if (!filter(node)) {
-            return;
+            return undefined;
         }
         const children = childrenExtractor(node);
         if (!children || !Array.isArray(children)) {
@@ -73,7 +73,7 @@ export function createTreeFilter<T>(
  * @param filter
  * @param childrenKey
  */
-export function createArrayChildrenTreeFilter<T extends {}>(
+export function createArrayChildrenTreeFilter<T>(
     filter: INodeFilter<T>,
     childrenKey: string,
 ): ITreeFilter<T> {
@@ -81,9 +81,7 @@ export function createArrayChildrenTreeFilter<T extends {}>(
         filter,
         createArrayChildrenExtractor(childrenKey),
         (node, childrenReplace) => {
-            return Object.assign({}, node, {
-                [childrenKey]: childrenReplace,
-            });
+            return { ...node, [childrenKey]: childrenReplace };
         },
     );
 }
@@ -98,8 +96,8 @@ export function createBreadthFirstTreeFinder<T>(
     filter: INodeFilter<T>,
     childrenExtractor: IChildrenExtractor<T>,
 ): ITreeFinder<T> {
-    return (node) => {
-        const queue = [node];
+    return (root) => {
+        const queue = [root];
         while (queue.length > 0) {
             const node = queue.shift();
             if (filter(node)) {
@@ -110,6 +108,7 @@ export function createBreadthFirstTreeFinder<T>(
                 queue.push(...children);
             }
         }
+        return undefined;
     };
 }
 
@@ -118,7 +117,7 @@ export function createBreadthFirstTreeFinder<T>(
  * @param filter
  * @param childrenKey
  */
-export function createBreadthFirstArrayChildrenTreeFinder<T extends {}>(
+export function createBreadthFirstArrayChildrenTreeFinder<T>(
     filter: INodeFilter<T>,
     childrenKey: string,
 ): ITreeFinder<T> {

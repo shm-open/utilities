@@ -4,8 +4,8 @@
 export class SmoothSampling {
     private maxSampleCount: number;
     private samples: number[] = [];
-    private currentSampleIndex: number = 0;
-    private average: number = 0;
+    private currentSampleIndex = 0;
+    private average = 0;
 
     /**
      * create a smooth sampling tool instance
@@ -19,7 +19,7 @@ export class SmoothSampling {
      * append a new sample value
      * @param sample sample value to add
      */
-    public append(sample: number) {
+    public append(sample: number): void {
         const { samples, currentSampleIndex } = this;
         samples[currentSampleIndex] = sample;
 

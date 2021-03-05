@@ -12,6 +12,7 @@ export interface ListenerSubscription {
 /**
  * a general event listener holder for listener subscription utilities
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class ListenerHolder<T, L extends (...args: any[]) => any> {
     private listenersByType = new Map<T, L[]>();
     private nextListenersByType = new Map<T, L[]>();
@@ -67,9 +68,9 @@ export class ListenerHolder<T, L extends (...args: any[]) => any> {
      * @param type event type
      * @param args event args
      */
-    public dispatch(type: T, ...args: Parameters<L>) {
+    public dispatch(type: T, ...args: Parameters<L>): void {
         const listeners = this.getListeners(type);
-        for (let i = 0; i < listeners.length; i++) {
+        for (let i = 0; i < listeners.length; i += 1) {
             listeners[i](...args);
         }
     }

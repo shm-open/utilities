@@ -4,7 +4,8 @@
 export type RecursivePartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[]
         ? RecursivePartial<U>[]
-        : T[P] extends object
+        : // eslint-disable-next-line @typescript-eslint/ban-types
+        T[P] extends object
         ? RecursivePartial<T[P]>
         : T[P];
 };
@@ -17,6 +18,7 @@ export type Nullable<T> = T | undefined | null;
 /**
  * Extract the type of object property
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type PropertyType<T extends object, K extends keyof T> = T[K];
 
 /**

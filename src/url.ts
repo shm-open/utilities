@@ -18,8 +18,8 @@ export type ParsedURLParamType = Record<string, string | string[]>;
 function sliceBy(
     text: string,
     delimiter: string,
-    include: boolean = false,
-    fromBack: boolean = false,
+    include = false,
+    fromBack = false,
 ): [string, string] {
     const index = text.indexOf(delimiter);
     if (index === -1) {
@@ -61,12 +61,15 @@ export function parseURL(url: string): URL {
     const protocolMatch = reProtocol.exec(url);
     const protocol = protocolMatch[1]?.toLowerCase() ?? '';
     const hasSlashes = !!protocolMatch[2];
+    // eslint-disable-next-line prefer-destructuring
     rest = protocolMatch[3];
 
     // extract hash & query
     let hash: string;
+    // eslint-disable-next-line prefer-const
     [rest, hash] = sliceBy(rest, '#', true);
     let search: string;
+    // eslint-disable-next-line prefer-const
     [rest, search] = sliceBy(rest, '?', true);
 
     // extract host & auth
@@ -101,6 +104,7 @@ export function stringifyURL(url: Partial<URL>): string {
     }${url.username || url.password ? '@' : ''}${url.hostname ?? ''}${
         url.port ? `:${url.port}` : ''
     }${
+        // eslint-disable-next-line no-nested-ternary
         url.pathname && url.pathname !== '/'
             ? url.pathname[0] === '/' || !url.hostname
                 ? url.pathname
@@ -117,7 +121,7 @@ export function stringifyURL(url: Partial<URL>): string {
  * @param host
  * @param levels default 2 levels, e.g. xxx.com, xxx.org
  */
-export function getDomainName(hostname: string, levels: number = 2) {
+export function getDomainName(hostname: string, levels = 2): string {
     const segments = hostname.split('.');
     if (levels < segments.length) {
         return segments.slice(segments.length - levels).join('.');
@@ -130,13 +134,14 @@ export function getDomainName(hostname: string, levels: number = 2) {
  * @param params
  * @param prefix - '#' or '?' char for params prefix
  */
-export function encodeURLParams(params: URLParamType, prefix: string = '') {
+export function encodeURLParams(params: URLParamType, prefix = ''): string {
     const encoded = Object.entries(params)
         .map((entry) => {
             const [key, value] = entry;
             if (!Array.isArray(value)) {
                 return `${key}=${encodeURIComponent(value)}`;
-            } else if (value !== undefined) {
+            }
+            if (value !== undefined) {
                 return value.map((v) => `${key}=${encodeURIComponent(v)}`).join('&');
             }
             return '';
@@ -153,7 +158,7 @@ function mergeURLParamsImpl<T>(
     base: Record<string, T | T[]>,
     toBeMerged: [string, T | T[]][],
 ): Record<string, T | T[]> {
-    const merged = Object.assign({}, base);
+    const merged = { ...base };
     return toBeMerged.reduce((res, [key, value]) => {
         if (value === undefined) {
             return res;
