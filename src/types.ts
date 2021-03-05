@@ -23,3 +23,10 @@ export type PropertyType<T extends object, K extends keyof T> = T[K];
  * Extract the type of array item
  */
 export type ArrayItemType<T extends unknown[]> = T[number];
+
+/**
+ * Convert interface type to type, it can be used to work with Record<string, unknown>
+ * check out this thread for details
+ * https://github.com/microsoft/TypeScript/issues/15300#issuecomment-760165845
+ */
+export type Typify<T> = { [K in keyof T]: T[K] };
