@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/shm-open/utilities/compare/v1.3.0...v1.4.0) (2021-03-10)
+
+
+### Features
+
+* **types:** add ParametersTypes<> and Promisify<> ([9834ff5](https://github.com/shm-open/utilities/commit/9834ff5bdfdd91bf7a170bc5d8dbe116bed9a705))
+
 ## [1.3.0](https://github.com/shm-open/utilities/compare/v1.2.2...v1.3.0) (2021-03-05)
 
 
