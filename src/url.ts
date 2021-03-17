@@ -200,7 +200,7 @@ export function decodeURLParams(encoded: string): ParsedURLParamType {
                 const [key, value] = entry.split('=');
                 return [decodeURIComponent(key), decodeURIComponent(value)] as [string, string];
             })
-            .filter(([key, value]) => key && value),
+            .filter(([key]) => key),
     );
 }
 

@@ -6,6 +6,7 @@ import {
     parseURLParams,
     appendURLParams,
     decodeURLParams,
+    encodeURLParams,
 } from './url';
 
 describe('parseURL()', () => {
@@ -206,7 +207,7 @@ describe('parseURLParams()', () => {
 
     it('handles empty param', () => {
         const result = parseURLParams('?x=');
-        expect(result.x).toEqual(undefined);
+        expect(result.x).toEqual('');
     });
 
     it('handles empty inputs', () => {
@@ -231,5 +232,17 @@ describe('decodeURLParams()', () => {
     it('handles empty inputs', () => {
         const result = decodeURLParams('');
         expect(result).toEqual({});
+    });
+
+    it('handles empty param', () => {
+        const result = decodeURLParams('app=');
+        expect(result).toEqual({ app: '' });
+    });
+});
+
+describe('encodeURLParams()', () => {
+    it('handles empty param', () => {
+        const result = encodeURLParams({ app: '' }, '?');
+        expect(result).toEqual('?app=');
     });
 });
