@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/shm-open/utilities/compare/v1.4.0...v1.4.1) (2021-03-17)
+
+
+### Bug Fixes
+
+* decodeURLParams() allows empty param to be decoded to empty string ([d28d116](https://github.com/shm-open/utilities/commit/d28d11681dd7e606325d8b5da4152e408288bc2e))
+
 ## [1.4.0](https://github.com/shm-open/utilities/compare/v1.3.0...v1.4.0) (2021-03-10)
 
 
