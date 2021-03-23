@@ -51,7 +51,12 @@ export interface URL {
 
 /**
  * parse the protocol, hostname, pathname, search, hash from url
- * it behaviors like the native(web browser) URL
+ * it behaviors like the native(web browser) URL.
+ * alternative solutions would be:
+ * - core-js@3 contains URL, URLSearchParams polyfill: https://github.com/zloirock/core-js#url-and-urlsearchparams
+ * - whatwg-url: https://github.com/jsdom/whatwg-url
+ * - react-native-url-polyfill: https://github.com/charpeni/react-native-url-polyfill
+ * and it's just a minimum implementation here
  * @param url
  */
 export function parseURL(url: string): URL {
@@ -221,7 +226,7 @@ function updateURLParams(
 }
 
 /**
- * append params to url as url parameters, it uses key=v1&key=v2 for { [key]: [v1, v2] } case
+ * append params to url as url search params, it uses key=v1&key=v2 for { [key]: [v1, v2] } case
  * @param url base url
  * @param params params to append
  */
@@ -230,7 +235,7 @@ export function appendURLParams(url: string, params: URLParamType): string {
 }
 
 /**
- * append params to url as hash parameters
+ * append params to url as url hash params
  * newly added hash params will be merged together with existing params
  * @param url
  * @param params
@@ -240,7 +245,7 @@ export function appendURLHashParams(url: string, params: URLParamType): string {
 }
 
 /**
- * set params value to url, it overrides existing params
+ * set search params value to url, it overrides existing params
  * @param url
  * @param params
  */
@@ -249,7 +254,7 @@ export function setURLParams(url: string, params: URLParamType): string {
 }
 
 /**
- * set params value to url hash, it overrides existing hash
+ * set hash params value to url hash, it overrides existing hash
  * @param url
  * @param params
  */
@@ -258,7 +263,7 @@ export function setURLHashParams(url: string, params: URLParamType): string {
 }
 
 /**
- * parse the params to JSON from given url
+ * parse the search params to JSON from given url
  * @param url string
  * @returns JSON structure that is string key and string value
  * @example
@@ -280,4 +285,61 @@ export function parseURLParams(url: string): ParsedURLParamType {
 export function parseURLHashParams(url: string): ParsedURLParamType {
     const { hash } = parseURL(url);
     return decodeURLParams(hash);
+}
+
+function toSingle(value: string | string[]): string {
+    if (Array.isArray(value)) {
+        return value[0];
+    }
+    return value;
+}
+
+function toArray(value: string | string[]): string[] {
+    if (value === undefined) {
+        return [];
+    }
+    if (Array.isArray(value)) {
+        return value;
+    }
+    return [value];
+}
+
+/**
+ * get single search param from url
+ * @param url
+ * @param name param name
+ * @returns
+ */
+export function getURLParam(url: string, name: string): string {
+    return toSingle(parseURLParams(url)[name]);
+}
+
+/**
+ * get all search params of given name in array
+ * @param url
+ * @param name param name
+ * @returns
+ */
+export function getAllURLParams(url: string, name: string): string[] {
+    return toArray(parseURLParams(url)[name]);
+}
+
+/**
+ * get single hash param
+ * @param url
+ * @param name
+ * @returns
+ */
+export function getURLHashParam(url: string, name: string): string {
+    return toSingle(parseURLHashParams(url)[name]);
+}
+
+/**
+ * get all hash params from given name in array
+ * @param url
+ * @param name
+ * @returns
+ */
+export function getAllURLHashParams(url: string, name: string): string[] {
+    return toArray(parseURLHashParams(url)[name]);
 }

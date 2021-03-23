@@ -7,6 +7,8 @@ import {
     appendURLParams,
     decodeURLParams,
     encodeURLParams,
+    getURLParam,
+    getAllURLHashParams,
 } from './url';
 
 describe('parseURL()', () => {
@@ -244,5 +246,49 @@ describe('encodeURLParams()', () => {
     it('handles empty param', () => {
         const result = encodeURLParams({ app: '' }, '?');
         expect(result).toEqual('?app=');
+    });
+});
+
+describe('getURLParam', () => {
+    it('handles single param', () => {
+        const result = getURLParam('https://www.51shihuimiao.com?z=3', 'z');
+        expect(result).toEqual('3');
+    });
+
+    it('handles array param', () => {
+        const result = getURLParam('https://www.51shihuimiao.com?z=3&z=4', 'z');
+        expect(result).toEqual('3');
+    });
+
+    it('handles empty param', () => {
+        const result = getURLParam('https://www.51shihuimiao.com?z=', 'z');
+        expect(result).toEqual('');
+    });
+
+    it('handles undefined param', () => {
+        const result = getURLParam('https://www.51shihuimiao.com?z=', 'a');
+        expect(result).toEqual(undefined);
+    });
+});
+
+describe('getAllURLHashParams', () => {
+    it('handles single param', () => {
+        const result = getAllURLHashParams('https://www.51shihuimiao.com#z=3', 'z');
+        expect(result).toEqual(['3']);
+    });
+
+    it('handles array param', () => {
+        const result = getAllURLHashParams('https://www.51shihuimiao.com#z=3&z=4', 'z');
+        expect(result).toEqual(['3', '4']);
+    });
+
+    it('handles empty param', () => {
+        const result = getAllURLHashParams('https://www.51shihuimiao.com#z=', 'z');
+        expect(result).toEqual(['']);
+    });
+
+    it('handles undefined param', () => {
+        const result = getAllURLHashParams('https://www.51shihuimiao.com?z=', 'a');
+        expect(result).toEqual([]);
     });
 });
