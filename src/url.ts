@@ -55,16 +55,17 @@ export interface URL {
  * alternative solutions would be:
  * - core-js@3 contains URL, URLSearchParams polyfill: https://github.com/zloirock/core-js#url-and-urlsearchparams
  * - whatwg-url: https://github.com/jsdom/whatwg-url
- * - react-native-url-polyfill: https://github.com/charpeni/react-native-url-polyfill
+ * - react-native-url-polyfill case is a bit complicated: https://github.com/charpeni/react-native-url-polyfill
  * and it's just a minimum implementation here
  * @param url
+ * @param [base] base for relative url
  */
-export function parseURL(url: string): URL {
+export function parseURL(url: string, base?: string): URL {
     let rest = url;
     const reProtocol = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i;
     // extract protocol
     const protocolMatch = reProtocol.exec(url);
-    const protocol = protocolMatch[1]?.toLowerCase() ?? '';
+    let protocol = protocolMatch[1]?.toLowerCase() ?? '';
     const hasSlashes = !!protocolMatch[2];
     // eslint-disable-next-line prefer-destructuring
     rest = protocolMatch[3];
@@ -83,8 +84,21 @@ export function parseURL(url: string): URL {
         [wholeHost, rest] = sliceBy(rest, '/', true);
     }
     const [auth, host] = sliceBy(wholeHost, '@', false, true);
-    const [username, password] = sliceBy(auth, ':');
-    const [hostname, port] = sliceBy(host, ':');
+    let [username, password] = sliceBy(auth, ':');
+    let [hostname, port] = sliceBy(host, ':');
+
+    // apply base url
+    if (!protocol && !hostname && base) {
+        const ref = parseURL(base);
+        protocol = ref.protocol;
+        username = ref.username;
+        password = ref.password;
+        hostname = ref.hostname;
+        port = ref.port;
+        if (hostname && rest && rest[0] !== '/') {
+            rest = `/${rest}`;
+        }
+    }
 
     return {
         protocol,

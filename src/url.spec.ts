@@ -101,6 +101,37 @@ describe('parseURL()', () => {
             hash: '#test=1?rev=1234',
         });
     });
+
+    it('handles relative url with base url', () => {
+        const result = parseURL('screen/index/index.html', 'https://www.51shihuimiao.com');
+        expect(result).toEqual({
+            protocol: 'https:',
+            username: '',
+            password: '',
+            hostname: 'www.51shihuimiao.com',
+            port: '',
+            pathname: '/screen/index/index.html',
+            search: '',
+            hash: '',
+        });
+    });
+
+    it('ignores base url for full url', () => {
+        const result = parseURL(
+            'https://www.51shihuimiao.com/screen/index/index.html',
+            'https://github.com',
+        );
+        expect(result).toEqual({
+            protocol: 'https:',
+            username: '',
+            password: '',
+            hostname: 'www.51shihuimiao.com',
+            port: '',
+            pathname: '/screen/index/index.html',
+            search: '',
+            hash: '',
+        });
+    });
 });
 
 describe('stringifyURL()', () => {
