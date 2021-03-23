@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/shm-open/utilities/compare/v1.4.1...v1.5.0) (2021-03-23)
+
+
+### Features
+
+* add getURLParam(), getAllURLParams(), getURLHashParam(), getAllURLHashParams() ([ecd8fdf](https://github.com/shm-open/utilities/commit/ecd8fdfc9592c33f99e0a36d68276af7d000f4be))
+* parseURL() support optional base param ([8d2ce05](https://github.com/shm-open/utilities/commit/8d2ce054b31a65359d4c103445f5546b85ee91f7))
+
 ### [1.4.1](https://github.com/shm-open/utilities/compare/v1.4.0...v1.4.1) (2021-03-17)
 
 
