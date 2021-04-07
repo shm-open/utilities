@@ -27,16 +27,28 @@ export type PropertyType<T extends object, K extends keyof T> = T[K];
 export type ArrayItemType<T extends unknown[]> = T[number];
 
 /**
- * Extract thee types array of function parameters
+ * Extract the types array of function parameters
+ * @deprecated please use ts built-in Parameters<T> instead.
  */
 export type ParametersTypes<T> = T extends (...args: infer P) => unknown ? P : [];
 
 /**
- * Convert interface type to type, it can be used to work with Record<string, unknown>
+ * Convert interface to type, so it can be used to work with Record<string, unknown>
  * check out this thread for details
  * https://github.com/microsoft/TypeScript/issues/15300#issuecomment-760165845
+ * @example foo as Typify<typeof foo>
  */
 export type Typify<T> = { [K in keyof T]: T[K] };
+
+/**
+ * convert object into typified instance, it's nothing more than `as Typify<typeof foo>`
+ * just works as an shorthand of explicit cast.
+ * @param target interface type object
+ * @returns the target itself, typified
+ */
+export function typify<T>(target: T): Typify<T> {
+    return target;
+}
 
 /**
  * Covert type T to Promise<T> except for Promises
