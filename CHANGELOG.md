@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/shm-open/utilities/compare/v1.5.0...v1.6.0) (2021-05-11)
+
+
+### Features
+
+* add useUpdateEffect() hook ([5307a6b](https://github.com/shm-open/utilities/commit/5307a6b97e847e49b58081a2a2dddf840d17b65c))
+
+
+### Bug Fixes
+
+* add typify() method as shorthand ([be554c8](https://github.com/shm-open/utilities/commit/be554c818737526eeb706b40c641669bf2b53a38))
+
 ## [1.5.0](https://github.com/shm-open/utilities/compare/v1.4.1...v1.5.0) (2021-03-23)
 
 
