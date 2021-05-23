@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/shm-open/utilities/compare/v1.6.0...v1.6.1) (2021-05-23)
+
+
+### Bug Fixes
+
+* useRefWrapper() sets value in effect ([866e8ae](https://github.com/shm-open/utilities/commit/866e8aeef9b4a2bb91ab438ad96e08fcc1cd31a2))
+
 ## [1.6.0](https://github.com/shm-open/utilities/compare/v1.5.0...v1.6.0) (2021-05-11)
 
 
