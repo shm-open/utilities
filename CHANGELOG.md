@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.2](https://github.com/shm-open/utilities/compare/v1.6.1...v1.6.2) (2021-05-31)
+
+
+### Bug Fixes
+
+* use useLayoutEffect() for useRefWrapper, to get the ref value synced in sync way ([47eb44b](https://github.com/shm-open/utilities/commit/47eb44bc2352781debff5061728e18c8c07a65ea))
+* **deps:** update jest, ts-jest to v27 ([f7c7b86](https://github.com/shm-open/utilities/commit/f7c7b86e2597c3f2c7a23aaca364a7276659424a))
+
 ### [1.6.1](https://github.com/shm-open/utilities/compare/v1.6.0...v1.6.1) (2021-05-23)
 
 
