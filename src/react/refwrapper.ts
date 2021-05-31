@@ -1,4 +1,4 @@
-import { useRef, MutableRefObject, useEffect } from 'react';
+import { useRef, MutableRefObject, useLayoutEffect } from 'react';
 
 /**
  * wraps input value into a ref, and keeps the ref sync with the input value
@@ -9,7 +9,7 @@ import { useRef, MutableRefObject, useEffect } from 'react';
 export function useRefWrapper<T>(value: T): MutableRefObject<T> {
     const ref = useRef(value);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         ref.current = value;
     });
 
