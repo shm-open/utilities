@@ -24,7 +24,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@shm-open/eslint-config-bundle": "1.1.12",
+    "@shm-open/eslint-config-bundle": "1.1.13",
     "@types/jest": "26.0.23",
     "@types/react": "17.0.11",
     "jest": "27.0.4",
