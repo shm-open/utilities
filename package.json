@@ -26,7 +26,7 @@
   "devDependencies": {
     "@shm-open/eslint-config-bundle": "1.1.16",
     "@types/jest": "26.0.23",
-    "@types/react": "17.0.11",
+    "@types/react": "17.0.12",
     "jest": "27.0.6",
     "react": "17.0.2",
     "standard-version": "9.3.0",
