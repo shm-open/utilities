@@ -1,6 +1,7 @@
 // export from modules
 export * from './function';
 export * from './listener';
+export * from './number';
 export * from './object';
 export * from './sampling';
 export * from './tree';
