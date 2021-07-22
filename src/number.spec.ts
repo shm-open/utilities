@@ -22,7 +22,7 @@ describe('formatNumber()', () => {
     });
 
     it('handles roundMethod', () => {
-        let result = formatNumber(1.5, { digits: 0 });
+        let result = formatNumber(1.5, { digits: 0, roundMethod: 'floor' });
         expect(result).toBe('1');
 
         result = formatNumber(1.6, { digits: 0, roundMethod: 'round' });

@@ -29,7 +29,7 @@ interface FormatNumberOptions {
     digitsMode?: 'fixed' | 'max';
     /**
      * round method used for limit the digits
-     * default is 'floor'
+     * default is 'round'
      */
     roundMethod?: 'floor' | 'round' | 'ceil';
     /**
@@ -57,7 +57,7 @@ export function formatNumber(num: number, options?: FormatNumberOptions): string
     const {
         digits,
         digitsMode = 'fixed',
-        roundMethod = 'floor',
+        roundMethod = 'round',
         units,
         epsilon = 0.00000001,
     } = options;
