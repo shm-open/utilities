@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/shm-open/utilities/compare/v1.7.0...v1.7.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* deal with floating point precision issue for formatNumber() ([3d65c65](https://github.com/shm-open/utilities/commit/3d65c654cb6c6f018424c1918139267d0c33e02a))
+
 ## [1.7.0](https://github.com/shm-open/utilities/compare/v1.6.2...v1.7.0) (2021-07-10)
 
 
