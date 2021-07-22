@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.2](https://github.com/shm-open/utilities/compare/v1.7.1...v1.7.2) (2021-07-22)
+
+
+### Bug Fixes
+
+* change the default roundMethod to "round" for formatNumber() ([6d582ac](https://github.com/shm-open/utilities/commit/6d582ac10f665d41749a53f4936dc38bd0b96f87))
+
 ### [1.7.1](https://github.com/shm-open/utilities/compare/v1.7.0...v1.7.1) (2021-07-22)
 
 
