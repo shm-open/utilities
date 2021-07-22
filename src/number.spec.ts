@@ -16,6 +16,9 @@ describe('formatNumber()', () => {
 
         result = formatNumber(1.234, { digits: 2, digitsMode: 'fixed' });
         expect(result).toBe('1.23');
+
+        result = formatNumber(1.234, { digits: 2, digitsMode: 'fixed' });
+        expect(result).toBe('1.23');
     });
 
     it('handles roundMethod', () => {
@@ -51,5 +54,17 @@ describe('formatNumber()', () => {
             ],
         });
         expect(result).toBe('15.0M');
+    });
+
+    it('works around the precision issue', () => {
+        let result = formatNumber(6660 / 100, {
+            digits: 2,
+            digitsMode: 'fixed',
+            roundMethod: 'floor',
+        });
+        expect(result).toBe('66.60');
+
+        result = formatNumber(0.1 + 0.2, { digits: 1, digitsMode: 'fixed', roundMethod: 'ceil' });
+        expect(result).toBe('0.3');
     });
 });

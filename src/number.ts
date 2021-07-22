@@ -37,6 +37,14 @@ interface FormatNumberOptions {
      * the array should be sorted according to value(threshold) large to small
      */
     units?: FormatNumberUnit[];
+
+    /**
+     * when working with floor/ceil round method, plus/minus the epsilon to deal with float point number issue like
+     * - 6659.999999999999 = 66.6 * 100
+     * - 0.30000000000000004 = 0.1 + 0.3
+     * default is 0.00000001
+     */
+    epsilon?: number;
 }
 /**
  * format number to string according given options, e.g. 2400 -> 2.4K
@@ -46,7 +54,13 @@ export function formatNumber(num: number, options?: FormatNumberOptions): string
     if (!options) {
         return `${num}`;
     }
-    const { digits, digitsMode = 'fixed', roundMethod = 'floor', units } = options;
+    const {
+        digits,
+        digitsMode = 'fixed',
+        roundMethod = 'floor',
+        units,
+        epsilon = 0.00000001,
+    } = options;
 
     // deal with negative number
     const isNegative = num < 0;
@@ -69,10 +83,10 @@ export function formatNumber(num: number, options?: FormatNumberOptions): string
         value *= factor;
         switch (roundMethod) {
             case 'floor':
-                value = Math.floor(value);
+                value = Math.floor(value + epsilon);
                 break;
             case 'ceil':
-                value = Math.ceil(value);
+                value = Math.ceil(value - epsilon);
                 break;
             default:
                 value = Math.round(value);
