@@ -5,7 +5,6 @@
     "outDir": "lib",
     "lib": ["dom", "es5", "es2015", "es2016", "es2017"],
     "noEmitOnError": true,
-    "jsx": "react",
     "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*.*"],

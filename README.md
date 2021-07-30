@@ -23,7 +23,9 @@ lightweight common utilities lib in es6 module
 
 `import { * } from '@inno/utilities/lib/react'`
 
--   [ComposeProviders](src/react/compose.ts)
--   [useIsMountedRef](src/react/mounted.ts)
--   [usePrevious](src/react/previous.ts)
--   [useRefWrapper](src/react/refwrapper.ts)
+-   [ComposeProviders](src/react/ComposeProviders.ts)
+-   [useIsMountedRef](src/react/useIsMountedRef.ts)
+-   [usePrevious](src/react/usePrevious.ts)
+-   [useRefWrapper](src/react/useRefWrapper.ts)
+-   [useUpdateEffect](src/react/useUpdateEffect.ts)
+-   [withClassComponentWrapper](src/react/withClassComponentWrapper.ts)
