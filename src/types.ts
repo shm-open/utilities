@@ -53,4 +53,8 @@ export function typify<T>(target: T): Typify<T> {
 /**
  * Covert type T to Promise<T> except for Promises
  */
-export type Promisify<T> = T extends Promise<unknown> ? T : Promise<T>;
+export type Promisify<T> = T extends Promise<unknown>
+    ? T
+    : T extends boolean
+    ? Promise<boolean>
+    : Promise<T>;

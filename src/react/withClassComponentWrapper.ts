@@ -1,5 +1,5 @@
-import { createElement, ComponentType, Component, ComponentClass } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
+import { createElement, ComponentType, Component, ComponentClass } from 'react';
 
 /**
  * wraps a component with a class component,
