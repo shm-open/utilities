@@ -1,4 +1,4 @@
-# Utilities
+# Utilities ![Node.js CI](https://github.com/shm-open/utilities/workflows/Node.js%20CI/badge.svg)
 
 lightweight common utilities lib in es6 module
 
