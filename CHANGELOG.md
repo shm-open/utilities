@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/shm-open/utilities/compare/v1.8.1...v1.9.0) (2021-10-08)
+
+
+### Features
+
+* add removeURLParams() and removeURLHashParams() ([88c60c0](https://github.com/shm-open/utilities/commit/88c60c01ccfa6bf21f6da50b142bbbca1e4594ee))
+
 ### [1.8.1](https://github.com/shm-open/utilities/compare/v1.8.0...v1.8.1) (2021-08-06)
 
 
