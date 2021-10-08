@@ -9,6 +9,8 @@ import {
     encodeURLParams,
     getURLParam,
     getAllURLHashParams,
+    removeURLParams,
+    removeURLHashParams,
 } from './url';
 
 describe('parseURL()', () => {
@@ -321,5 +323,29 @@ describe('getAllURLHashParams', () => {
     it('handles undefined param', () => {
         const result = getAllURLHashParams('https://www.51shihuimiao.com?z=', 'a');
         expect(result).toEqual([]);
+    });
+});
+
+describe('removeURLParams()', () => {
+    it('removes url params', () => {
+        const result = removeURLParams('https://www.51shihuimiao.com?z=3');
+        expect(result).toEqual('https://www.51shihuimiao.com');
+    });
+
+    it('keeps url without params unchanged', () => {
+        const url = 'https://www.51shihuimiao.com';
+        expect(removeURLParams(url)).toEqual(url);
+    });
+});
+
+describe('removeURLParams()', () => {
+    it('removes url hash', () => {
+        const result = removeURLHashParams('https://www.51shihuimiao.com?z=3#click=123');
+        expect(result).toEqual('https://www.51shihuimiao.com?z=3');
+    });
+
+    it('keeps url without hash unchanged', () => {
+        const url = 'https://www.51shihuimiao.com?z=3';
+        expect(removeURLHashParams(url)).toEqual(url);
     });
 });

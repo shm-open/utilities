@@ -357,3 +357,29 @@ export function getURLHashParam(url: string, name: string): string {
 export function getAllURLHashParams(url: string, name: string): string[] {
     return toArray(parseURLHashParams(url)[name]);
 }
+
+function removeAfterChar(str: string, char: string): string {
+    if (!str) {
+        return str;
+    }
+    const index = str.indexOf(char);
+    return index === -1 ? str : str.substring(0, index);
+}
+
+/**
+ * remove params from url, including hash
+ * @param url
+ * @returns
+ */
+export function removeURLParams(url: string): string {
+    return removeAfterChar(url, '?');
+}
+
+/**
+ * remove hash from url
+ * @param url
+ * @returns
+ */
+export function removeURLHashParams(url: string): string {
+    return removeAfterChar(url, '#');
+}
