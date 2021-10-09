@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/shm-open/utilities/compare/v1.9.0...v1.10.0) (2021-10-09)
+
+
+### Features
+
+* add useCallbackProxy() ([1e73ac7](https://github.com/shm-open/utilities/commit/1e73ac72eb164336021bfebb46f52f02403674b0))
+
+
+### Bug Fixes
+
+* add null check for encodeURLParams, mergeURLParams, decodeURLParams ([16f79ad](https://github.com/shm-open/utilities/commit/16f79ad1f47433c2f021c60b7fc84a549126590c))
+
 ## [1.9.0](https://github.com/shm-open/utilities/compare/v1.8.1...v1.9.0) (2021-10-08)
 
 
