@@ -154,6 +154,9 @@ export function getDomainName(hostname: string, levels = 2): string {
  * @param prefix - '#' or '?' char for params prefix
  */
 export function encodeURLParams(params: URLParamType, prefix = ''): string {
+    if (!params) {
+        return '';
+    }
     const encoded = Object.entries(params)
         .map((entry) => {
             const [key, value] = entry;
@@ -203,6 +206,12 @@ function mergeURLParamsImpl<T>(
  * @param params2
  */
 export function mergeURLParams(params1: URLParamType, params2: URLParamType): URLParamType {
+    if (!params1) {
+        return params2;
+    }
+    if (!params2) {
+        return params1;
+    }
     return mergeURLParamsImpl(params1, Object.entries(params2));
 }
 
@@ -211,6 +220,9 @@ export function mergeURLParams(params1: URLParamType, params2: URLParamType): UR
  * @param encoded
  */
 export function decodeURLParams(encoded: string): ParsedURLParamType {
+    if (!encoded) {
+        return {};
+    }
     return mergeURLParamsImpl(
         {},
         (encoded[0] === '?' || encoded[0] === '#' ? encoded.slice(1) : encoded)
