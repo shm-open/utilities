@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.1](https://github.com/shm-open/utilities/compare/v1.10.0...v1.10.1) (2021-10-21)
+
+
+### Bug Fixes
+
+* **types:** use (...args: never[]) => unknown for generic function base type ([875624d](https://github.com/shm-open/utilities/commit/875624d5ab2a4f859a42a774b1ac502414fcef0a))
+
 ## [1.10.0](https://github.com/shm-open/utilities/compare/v1.9.0...v1.10.0) (2021-10-09)
 
 
