@@ -12,8 +12,7 @@ export interface ListenerSubscription {
 /**
  * a general event listener holder for listener subscription utilities
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class ListenerHolder<T, L extends (...args: any[]) => any> {
+export class ListenerHolder<T, L extends (...args: never[]) => unknown> {
     private listenersByType = new Map<T, L[]>();
     private nextListenersByType = new Map<T, L[]>();
 

@@ -9,7 +9,7 @@ import { useRefWrapper } from './useRefWrapper';
  * @param callback
  * @returns
  */
-export function useCallbackProxy<T extends (...args: unknown[]) => unknown>(callback: T): T {
+export function useCallbackProxy<T extends (...args: never[]) => unknown>(callback: T): T {
     const callbackRef = useRefWrapper<T>(callback);
     return useCallback<T>(
         ((...args) => {
