@@ -12,7 +12,10 @@ export interface ListenerSubscription {
 /**
  * a general event listener holder for listener subscription utilities
  */
-export class ListenerHolder<T, L extends (...args: never[]) => unknown> {
+export class ListenerHolder<
+    T,
+    L extends (...args: never[]) => unknown = (...args: unknown[]) => unknown,
+> {
     private listenersByType = new Map<T, L[]>();
     private nextListenersByType = new Map<T, L[]>();
 
