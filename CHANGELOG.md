@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.2](https://github.com/shm-open/utilities/compare/v1.10.1...v1.10.2) (2021-10-22)
+
+
+### Bug Fixes
+
+* **ts:** ListenerHolder type defaults to (...args: unknown[]) ([34c6a99](https://github.com/shm-open/utilities/commit/34c6a998042701b1e72135d99caaabe57ab0a1f7))
+
 ### [1.10.1](https://github.com/shm-open/utilities/compare/v1.10.0...v1.10.1) (2021-10-21)
 
 
