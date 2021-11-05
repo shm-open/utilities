@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/shm-open/utilities/compare/v1.10.2...v1.11.0) (2021-11-05)
+
+
+### Features
+
+* add useSyncState hooks for synchronous state management ([824c074](https://github.com/shm-open/utilities/commit/824c0744902d648edde9f75d991e3a19b680a176))
+
 ### [1.10.2](https://github.com/shm-open/utilities/compare/v1.10.1...v1.10.2) (2021-10-22)
 
 
