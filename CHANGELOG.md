@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/shm-open/utilities/compare/v1.11.0...v1.12.0) (2021-11-15)
+
+
+### Features
+
+* add useSyncStateWrapper() ([e534ddf](https://github.com/shm-open/utilities/commit/e534ddf2c2aec2db080fb6e96b232a9de928a6ed))
+
 ## [1.11.0](https://github.com/shm-open/utilities/compare/v1.10.2...v1.11.0) (2021-11-05)
 
 
