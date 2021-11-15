@@ -7,5 +7,6 @@ export * from './useReactiveSyncState';
 export * from './useSyncState';
 export * from './useSyncStateListener';
 export * from './useSyncStateValue';
+export * from './useSyncStateWrapper';
 export * from './useUpdateEffect';
 export * from './withClassComponentWrapper';
