@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.2](https://github.com/shm-open/utilities/compare/v1.12.1...v1.12.2) (2021-11-16)
+
+
+### Bug Fixes
+
+* revert back to useEffect in useSyncStateValue() ([4fb89e6](https://github.com/shm-open/utilities/commit/4fb89e6a610121f387cbebaaaa37b7ebf8650458))
+
 ### [1.12.1](https://github.com/shm-open/utilities/compare/v1.12.0...v1.12.1) (2021-11-16)
 
 
