@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SyncState } from './useSyncState';
 
 /**
@@ -10,7 +10,8 @@ export function useSyncStateValue<T>(state: SyncState<T>): T {
     // triggers rerender during state change
     const [, setTrack] = useState<T>(state.getValue());
 
-    useLayoutEffect(() => {
+    useEffect(() => {
+        setTrack(state.getValue());
         return state.addListener(setTrack);
     }, [state]);
 
