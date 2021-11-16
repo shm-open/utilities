@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.1](https://github.com/shm-open/utilities/compare/v1.12.0...v1.12.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* useLayoutEffect for useSyncStateValue() to ensure it update to date ([24b1001](https://github.com/shm-open/utilities/commit/24b10012a72430b39ac2c7a4708eee7be2fd3353))
+
 ## [1.12.0](https://github.com/shm-open/utilities/compare/v1.11.0...v1.12.0) (2021-11-15)
 
 
