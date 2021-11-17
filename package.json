@@ -34,7 +34,7 @@
     "react-test-renderer": "17.0.2",
     "standard-version": "9.3.2",
     "ts-jest": "27.0.7",
-    "typescript": "4.4.4"
+    "typescript": "4.5.2"
   },
   "dependencies": {
     "hoist-non-react-statics": "^3.3.2"
