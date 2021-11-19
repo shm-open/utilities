@@ -18,5 +18,6 @@ export function useUpdateEffect(
             return undefined;
         }
         return effect();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, deps);
 }

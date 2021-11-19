@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { ListenerSubscription, ListenerHolder } from '../listener';
 
+type SyncStateEvent = 'beforeChange' | 'change' | 'afterChange';
+
 /**
  * sync state object
  */
@@ -16,15 +18,25 @@ export interface SyncState<T> {
      */
     setValue(value: T): void;
     /**
-     * add an listener to the value change
+     * add a listener to the afterChange event
      * @param listener
      */
     addListener(listener: (value: T) => void): ListenerSubscription;
+    /**
+     * add an event listener
+     * @param event
+     *  - beforeChange: before value change, designed for reduce listener/effect calls if a batch of
+     *      reactive state changes are going to be triggered
+     *  - change: value change, designed for ReactiveSyncState, sync states need to be updated
+     *      first before default listeners called to ensure the correct values are retrived
+     *  - afterChange: after value change, default listen to this event
+     */
+    addListener(event: SyncStateEvent, listener: (value: T) => void): ListenerSubscription;
 }
 
 class SyncStateImpl<T> implements SyncState<T> {
     private value: T;
-    private listenerHolder = new ListenerHolder<'change', (value: T) => void>();
+    private listenerHolder = new ListenerHolder<SyncStateEvent, (value: T) => void>();
 
     constructor(init: T | (() => T)) {
         if (typeof init === 'function') {
@@ -42,13 +54,21 @@ class SyncStateImpl<T> implements SyncState<T> {
         if (value === this.value) {
             return;
         }
-
+        this.listenerHolder.dispatch('beforeChange', value);
         this.value = value;
         this.listenerHolder.dispatch('change', value);
+        this.listenerHolder.dispatch('afterChange', value);
     }
 
-    addListener(listener: (value: T) => void): ListenerSubscription {
-        return this.listenerHolder.addListener('change', listener);
+    addListener(
+        eventOrListener: SyncStateEvent | ((value: T) => void),
+        listener?: (value: T) => void,
+    ): ListenerSubscription {
+        if (typeof eventOrListener === 'function') {
+            return this.listenerHolder.addListener('afterChange', eventOrListener);
+        }
+
+        return this.listenerHolder.addListener(eventOrListener, listener);
     }
 }
 

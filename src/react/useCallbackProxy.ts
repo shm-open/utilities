@@ -11,6 +11,7 @@ import { useRefWrapper } from './useRefWrapper';
  */
 export function useCallbackProxy<T extends (...args: never[]) => unknown>(callback: T): T {
     const callbackRef = useRefWrapper<T>(callback);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     return useCallback<T>(
         ((...args) => {
             return callbackRef.current(...args);

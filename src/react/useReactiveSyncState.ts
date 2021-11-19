@@ -1,6 +1,6 @@
+import { useEffect, useRef } from 'react';
 import { useRefWrapper } from './useRefWrapper';
 import { SyncState, useSyncState } from './useSyncState';
-import { useSyncStateListener } from './useSyncStateListener';
 
 /**
  * create a reactive sync state object that update its value by compute method
@@ -13,11 +13,21 @@ export function useReactiveSyncState<T, S>(
     compute: (value: S) => T,
 ): SyncState<T> {
     const computeRef = useRefWrapper(compute);
-
-    const reactiveState = useSyncState(computeRef.current(state.getValue()));
-    useSyncStateListener(state, (value) => {
-        reactiveState.setValue(computeRef.current(value));
-    });
+    const latestValueRef = useRef(state.getValue());
+    const reactiveState = useSyncState(computeRef.current(latestValueRef.current));
+    useEffect(() => {
+        if (latestValueRef.current !== state.getValue()) {
+            latestValueRef.current = state.getValue();
+            reactiveState.setValue(computeRef.current(latestValueRef.current));
+        }
+        return state.addListener('change', (value) => {
+            if (latestValueRef.current === value) {
+                return;
+            }
+            latestValueRef.current = value;
+            reactiveState.setValue(computeRef.current(value));
+        });
+    }, [computeRef, reactiveState, state]);
 
     return reactiveState;
 }
