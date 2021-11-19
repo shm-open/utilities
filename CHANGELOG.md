@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.3](https://github.com/shm-open/utilities/compare/v1.12.2...v1.12.3) (2021-11-19)
+
+
+### Bug Fixes
+
+* make ReactiveSyncState update before fire event to default event listener ([2d71ead](https://github.com/shm-open/utilities/commit/2d71eadd08cad2a82bf8bc0beafb8407d2ded174))
+* put listener into callback proxy for useSyncStateListener ([4d96f93](https://github.com/shm-open/utilities/commit/4d96f937cd430ae87ffd3f89b7f0fbac81e8a6f6))
+
 ### [1.12.2](https://github.com/shm-open/utilities/compare/v1.12.1...v1.12.2) (2021-11-16)
 
 
