@@ -3,7 +3,7 @@ import { usePrevious } from './usePrevious';
 
 describe('usePrevious()', () => {
     it('returns undefined for initial value', () => {
-        const { result } = renderHook((props) => usePrevious(props), { initialProps: 1 });
+        const { result } = renderHook(() => usePrevious(1));
         expect(result.current).toBe(undefined);
     });
 
