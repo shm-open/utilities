@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/shm-open/utilities/compare/v1.12.3...v1.13.0) (2021-11-30)
+
+
+### Features
+
+* add `useSyncStateEffect`, `useDeepEqualMemo` ([a272d2e](https://github.com/shm-open/utilities/commit/a272d2e315e53f123ddfeb588135b03125661a8e))
+
 ### [1.12.3](https://github.com/shm-open/utilities/compare/v1.12.2...v1.12.3) (2021-11-19)
 
 
