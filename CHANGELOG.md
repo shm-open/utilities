@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.1](https://github.com/shm-open/utilities/compare/v1.13.0...v1.13.1) (2021-12-01)
+
+
+### Bug Fixes
+
+* turn on esModuleInterop in ts config ([8c453d5](https://github.com/shm-open/utilities/commit/8c453d5a5034b6cdeee15e97dca6242bf1125e15))
+
 ## [1.13.0](https://github.com/shm-open/utilities/compare/v1.12.3...v1.13.0) (2021-11-30)
 
 

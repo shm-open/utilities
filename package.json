@@ -1,6 +1,6 @@
 {
   "name": "@shm-open/utilities",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "description": "common utilities",
   "type": "module",
   "main": "lib/index.js",
