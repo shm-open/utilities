@@ -1,4 +1,4 @@
-import * as isDeepEqual from 'fast-deep-equal';
+import isDeepEqual from 'fast-deep-equal';
 import { useEffect, useRef } from 'react';
 
 /**
