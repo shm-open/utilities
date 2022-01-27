@@ -160,13 +160,13 @@ export function encodeURLParams(params: URLParamType, prefix = ''): string {
     const encoded = Object.entries(params)
         .map((entry) => {
             const [key, value] = entry;
+            if (value === undefined) {
+                return '';
+            }
             if (!Array.isArray(value)) {
                 return `${key}=${encodeURIComponent(value)}`;
             }
-            if (value !== undefined) {
-                return value.map((v) => `${key}=${encodeURIComponent(v)}`).join('&');
-            }
-            return '';
+            return value.map((v) => `${key}=${encodeURIComponent(v)}`).join('&');
         })
         .filter((entry) => !!entry)
         .join('&');

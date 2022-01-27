@@ -273,12 +273,27 @@ describe('decodeURLParams()', () => {
         const result = decodeURLParams('app=');
         expect(result).toEqual({ app: '' });
     });
+
+    it('handles array', () => {
+        const result = decodeURLParams('?app=1&app=2');
+        expect(result).toEqual({ app: ['1', '2'] });
+    });
 });
 
 describe('encodeURLParams()', () => {
     it('handles empty param', () => {
         const result = encodeURLParams({ app: '' }, '?');
         expect(result).toEqual('?app=');
+    });
+
+    it('skips undefined param', () => {
+        const result = encodeURLParams({ app: 1, undef: undefined }, '?');
+        expect(result).toEqual('?app=1');
+    });
+
+    it('handles array', () => {
+        const result = encodeURLParams({ app: [1, 2] }, '?');
+        expect(result).toEqual('?app=1&app=2');
     });
 });
 
