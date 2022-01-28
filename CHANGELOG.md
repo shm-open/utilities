@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.2](https://github.com/shm-open/utilities/compare/v1.13.1...v1.13.2) (2022-01-28)
+
+
+### Bug Fixes
+
+* **url:** encodeURLParams() encode parameter keys ([a3b8243](https://github.com/shm-open/utilities/commit/a3b82433d3c7ef28828a8bde9976d4d61f6d0093))
+* **url:** skip encode undefined param into string ([f792b34](https://github.com/shm-open/utilities/commit/f792b34818a402009c9c8c1fb97d813bafb9e56f))
+
 ### [1.13.1](https://github.com/shm-open/utilities/compare/v1.13.0...v1.13.1) (2021-12-01)
 
 
