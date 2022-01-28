@@ -295,6 +295,11 @@ describe('encodeURLParams()', () => {
         const result = encodeURLParams({ app: [1, 2] }, '?');
         expect(result).toEqual('?app=1&app=2');
     });
+
+    it('handles key/params that needs url encode', () => {
+        const result = encodeURLParams({ app: 'shm/app', 'my/key': 1 }, '?');
+        expect(result).toEqual('?app=shm%2Fapp&my%2Fkey=1');
+    });
 });
 
 describe('getURLParam', () => {

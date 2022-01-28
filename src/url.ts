@@ -163,10 +163,11 @@ export function encodeURLParams(params: URLParamType, prefix = ''): string {
             if (value === undefined) {
                 return '';
             }
+            const encodedKey = encodeURIComponent(key);
             if (!Array.isArray(value)) {
-                return `${key}=${encodeURIComponent(value)}`;
+                return `${encodedKey}=${encodeURIComponent(value)}`;
             }
-            return value.map((v) => `${key}=${encodeURIComponent(v)}`).join('&');
+            return value.map((v) => `${encodedKey}=${encodeURIComponent(v)}`).join('&');
         })
         .filter((entry) => !!entry)
         .join('&');
