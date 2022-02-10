@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import { useRef } from 'react';
 import { ListenerSubscription, ListenerHolder } from '../listener';
 
@@ -7,34 +8,7 @@ type SyncStateEvent = 'beforeChange' | 'change' | 'afterChange';
  * sync state object
  */
 // eslint-disable-next-line import/no-unused-modules
-export interface SyncState<T> {
-    /**
-     * get current state value
-     */
-    getValue(): T;
-    /**
-     * set state value
-     * @param value
-     */
-    setValue(value: T): void;
-    /**
-     * add a listener to the afterChange event
-     * @param listener
-     */
-    addListener(listener: (value: T) => void): ListenerSubscription;
-    /**
-     * add an event listener
-     * @param event
-     *  - beforeChange: before value change, designed for reduce listener/effect calls if a batch of
-     *      reactive state changes are going to be triggered
-     *  - change: value change, designed for ReactiveSyncState, sync states need to be updated
-     *      first before default listeners called to ensure the correct values are retrived
-     *  - afterChange: after value change, default listen to this event
-     */
-    addListener(event: SyncStateEvent, listener: (value: T) => void): ListenerSubscription;
-}
-
-class SyncStateImpl<T> implements SyncState<T> {
+export class SyncState<T> {
     private value: T;
     private listenerHolder = new ListenerHolder<SyncStateEvent, (value: T) => void>();
 
@@ -46,11 +20,18 @@ class SyncStateImpl<T> implements SyncState<T> {
         }
     }
 
-    getValue() {
+    /**
+     * get current state value
+     */
+    getValue(): T {
         return this.value;
     }
 
-    setValue(value: T) {
+    /**
+     * set state value
+     * @param value
+     */
+    setValue(value: T): void {
         if (value === this.value) {
             return;
         }
@@ -59,6 +40,23 @@ class SyncStateImpl<T> implements SyncState<T> {
         this.listenerHolder.dispatch('change', value);
         this.listenerHolder.dispatch('afterChange', value);
     }
+
+    /**
+     * add a listener to the afterChange event
+     * @param listener
+     */
+    addListener(listener: (value: T) => void): ListenerSubscription;
+
+    /**
+     * add an event listener
+     * @param event
+     *  - beforeChange: before value change, designed for reduce listener/effect calls if a batch of
+     *      reactive state changes are going to be triggered
+     *  - change: value change, designed for ReactiveSyncState, sync states need to be updated
+     *      first before default listeners called to ensure the correct values are retrived
+     *  - afterChange: after value change, default listen to this event
+     */
+    addListener(event: SyncStateEvent, listener: (value: T) => void): ListenerSubscription;
 
     addListener(
         eventOrListener: SyncStateEvent | ((value: T) => void),
@@ -85,6 +83,6 @@ class SyncStateImpl<T> implements SyncState<T> {
  * @returns
  */
 export function useSyncState<T>(init: T | (() => T)): SyncState<T> {
-    const stateRef = useRef(new SyncStateImpl(init));
+    const stateRef = useRef(new SyncState(init));
     return stateRef.current;
 }
